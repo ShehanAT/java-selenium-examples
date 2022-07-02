@@ -3,6 +3,20 @@
   <groupId>onlinebookstore</groupId>
   <artifactId>onlinebookstore</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <selenium.version>3.141.59</selenium.version>
+        <testng.version>7.1.0</testng.version>
+        <extentreports.version>4.0.8</extentreports.version>
+        <extentreports.adapter.version>1.0.3</extentreports.adapter.version>
+        <lombok.version>1.18.12</lombok.version>
+        <webdrivermanager.version>4.2.0</webdrivermanager.version>
+        <log4j.version>2.13.3</log4j.version>
+  </properties>
   <packaging>war</packaging>
   <build>
 <!--    <sourceDirectory>src</sourceDirectory>-->
@@ -32,7 +46,7 @@
         </plugin>
     </plugins>
   </build>
-  <dependencies>
+  <!-- <dependencies>
   	
   	<dependency>
   		<groupId>org.postgresql</groupId>
@@ -53,7 +67,56 @@
   		<artifactId>javax.servlet-api</artifactId>
   		<version>3.1.0</version>
   	</dependency>
-  </dependencies>
+  </dependencies>-->
+     <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+<!--        todo update extentreports to new release      -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+<!--        todo update extentreports-testng-adapter to new release      -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports-testng-adapter</artifactId>
+            <version>${extentreports.adapter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+    </dependencies>
     <distributionManagement>
         <repository>
             <uniqueVersion>false</uniqueVersion>
