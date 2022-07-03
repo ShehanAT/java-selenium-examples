@@ -24,8 +24,8 @@ public class SeleniumDragAndDrop {
 	@Before
 	public void initFirefox() {
 		Properties properties = new Properties();
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\sheha\\OneDrive\\Documents\\JavaApplications\\geckodriver\\geckodriver.exe");
-		System.setProperty("webdriver.firefox.bin","C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+		System.setProperty("webdriver.gecko.driver", System.getenv("GEEKODRIVER_PATH"));
+		System.setProperty("webdriver.firefox.bin", System.getenv("FIREFOX_PATH"));
 		WebDriver driver = new FirefoxDriver();
 	}
 	
@@ -54,6 +54,8 @@ public class SeleniumDragAndDrop {
 		
 		WebElement dragElement = driver.findElement(By.xpath("//*[@id='draggable']"));
 		WebElement dropElement = driver.findElement(By.xpath("//*[@id='droppable']"));
+		
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		
 		Actions dragAndDropAction = new Actions(driver);
 		dragAndDropAction.moveToElement(dragElement).dragAndDrop(dragElement, dropElement).build().perform();
