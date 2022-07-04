@@ -38,18 +38,13 @@ public class SeleniumDragAndDrop {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-		
-		
-		
 		WebElement acceptedElementsTab = driver.findElement(By.xpath("//*[@id='Accepted Elements']"));
 
-		
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		((RemoteWebDriver) driver).executeScript("arguments[0].click();", acceptedElementsTab);
 
 		WebElement iframe = driver.findElement(By.cssSelector("iframe[data-src='../../demoSite/practice/droppable/accepted-elements.html']"));
-		System.out.println("Selected Iframe: ");
-		System.out.println(iframe.getTagName());
+
 		driver.switchTo().frame(iframe);
 		
 		WebElement dragElement = driver.findElement(By.xpath("//*[@id='draggable']"));
