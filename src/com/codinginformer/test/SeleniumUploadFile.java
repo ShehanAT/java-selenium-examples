@@ -1,8 +1,11 @@
 package com.codinginformer.test;
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +14,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SeleniumUploadFile {
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+	@Before
+	public void initFirefox() {
+		Properties properties = new Properties();
+		System.setProperty("webdriver.gecko.driver", System.getenv("GEEKODRIVER_PATH"));
+		System.setProperty("webdriver.firefox.bin", System.getenv("FIREFOX_PATH"));
+		WebDriver driver = new FirefoxDriver();
+	}
+	
+	
+ 	@Test
+ 	public void uploadFile() {
 		   // TODO Auto-generated method stub
 		 
 		   WebDriver d = new FirefoxDriver();
@@ -35,7 +48,7 @@ public class SeleniumUploadFile {
 		   WebElement fileUpload = d.findElement(By.xpath("//input[@value='Send File']"));
 		   //click on ‘Choose file’ to upload the desired file
 		   
-		   fileUpload.sendKeys(System.getenv("FILE_UPLOAD_PATH");); //Uploading the file using sendKeys
+		   fileUpload.sendKeys(System.getenv("FILE_UPLOAD_PATH")); //Uploading the file using sendKeys
 		   System.out.println("File is Uploaded Successfully");
 		 
 		   }

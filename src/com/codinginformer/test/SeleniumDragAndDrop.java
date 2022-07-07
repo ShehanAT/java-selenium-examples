@@ -41,6 +41,7 @@ public class SeleniumDragAndDrop {
 		WebElement acceptedElementsTab = driver.findElement(By.xpath("//*[@id='Accepted Elements']"));
 
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+	
 		((RemoteWebDriver) driver).executeScript("arguments[0].click();", acceptedElementsTab);
 
 		WebElement iframe = driver.findElement(By.cssSelector("iframe[data-src='../../demoSite/practice/droppable/accepted-elements.html']"));
