@@ -11,6 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SeleniumUploadFile {
 
@@ -45,11 +46,24 @@ public class SeleniumUploadFile {
 		 
 		   // FILE UPLOADING USING SENDKEYS ....
 		 
+		   WebElement fileSelect = d.findElement(By.xpath("//input[@name='userfile']"));
+		   
+//		   ((RemoteWebDriver) d).executeScript("arguments[0].click();", fileSelect);
+
+		   
 		   WebElement fileUpload = d.findElement(By.xpath("//input[@value='Send File']"));
 		   //click on ‘Choose file’ to upload the desired file
 		   
 		   fileUpload.sendKeys(System.getenv("FILE_UPLOAD_PATH")); //Uploading the file using sendKeys
+		   
+		   d.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		   
+		   ((RemoteWebDriver) d).executeScript("arguments[0].click();", fileUpload);
+		   
+		   d.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		   
 		   System.out.println("File is Uploaded Successfully");
-		 
+		   
+//		   d.quit();
 		   }
 }
