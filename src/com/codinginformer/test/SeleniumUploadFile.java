@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -25,8 +26,8 @@ public class SeleniumUploadFile {
 	
 	
 	@Test 
-	public void uploadFile() {
-	        String baseUrl = "http://the-internet.herokuapp.com/upload";
+	public void uploadImageFile() {
+	        String baseUrl = "https://selenium-testing-website.herokuapp.com/upload";
 	       
 	        WebDriver driver = new FirefoxDriver();
 
@@ -34,11 +35,39 @@ public class SeleniumUploadFile {
 	        WebElement uploadElement = driver.findElement(By.id("file-upload"));
 	 
 	        
-	        uploadElement.sendKeys("C:\\newhtml.html");
+	        uploadElement.sendKeys(System.getenv("IMAGE_FILE_UPLOAD_PATH"));
 
 
 	        driver.findElement(By.id("file-submit")).click();
+	        
+	    	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
+	    	WebElement javaLogo = driver.findElement(By.xpath("//img[@src='/uploads/Java-Logo.png']"));
+	    	
+	    	Assert.assertNotNull(javaLogo);
+			// Next steps: if image file is uploaded, check for the existence of the image in the following page. If not, check for the existence of non-image page in the following page
+	}
+	
+	@Test 
+	public void uploadNonImageFile() {
+	        String baseUrl = "https://selenium-testing-website.herokuapp.com/upload";
+	       
+	        WebDriver driver = new FirefoxDriver();
+
+	        driver.get(baseUrl);
+	        WebElement uploadElement = driver.findElement(By.id("file-upload"));
+	 
+	        
+	        uploadElement.sendKeys(System.getenv("NON_IMAGE_FILE_UPLOAD_PATH"));
+
+
+	        driver.findElement(By.id("file-submit")).click();
+	        
+	    	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+	    	WebElement nonImageText = driver.findElement(By.xpath("//*[contains(text(), '/uploads/download')]"));
+	    	
+	    	Assert.assertNotNull(nonImageText);
 			// Next steps: if image file is uploaded, check for the existence of the image in the following page. If not, check for the existence of non-image page in the following page
 	}
  	
