@@ -23,6 +23,7 @@ public class SeleniumUploadFile {
 		WebDriver driver = new FirefoxDriver();
 	}
 	
+	
 	@Test 
 	public void uploadFile() {
 	        String baseUrl = "http://the-internet.herokuapp.com/upload";
@@ -37,6 +38,8 @@ public class SeleniumUploadFile {
 
 
 	        driver.findElement(By.id("file-submit")).click();
+
+			// Next steps: if image file is uploaded, check for the existence of the image in the following page. If not, check for the existence of non-image page in the following page
 	}
  	
 	
