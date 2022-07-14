@@ -42,10 +42,9 @@ public class SeleniumUploadFile {
 	        
 	    	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
-	    	WebElement javaLogo = driver.findElement(By.xpath("//img[@src='/uploads/Java-Logo.png']"));
+	    	WebElement javaLogo = driver.findElement(By.xpath("//img[@src='/uploads/" + System.getenv("IMAGE_FILE_NAME") + "']"));
 	    	
 	    	Assert.assertNotNull(javaLogo);
-			// Next steps: if image file is uploaded, check for the existence of the image in the following page. If not, check for the existence of non-image page in the following page
 	}
 	
 	@Test 
@@ -65,7 +64,7 @@ public class SeleniumUploadFile {
 	        
 	    	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
-	    	WebElement nonImageText = driver.findElement(By.xpath("//*[contains(text(), '/uploads/download')]"));
+	    	WebElement nonImageText = driver.findElement(By.xpath("//*[contains(text(), '/uploads/" + System.getenv("NON_IMAGE_FILE_NAME") + "')]"));
 	    	
 	    	Assert.assertNotNull(nonImageText);
 			// Next steps: if image file is uploaded, check for the existence of the image in the following page. If not, check for the existence of non-image page in the following page
