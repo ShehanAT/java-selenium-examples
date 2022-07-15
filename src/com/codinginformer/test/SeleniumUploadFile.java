@@ -44,7 +44,7 @@ public class SeleniumUploadFile {
 
 	    	WebElement javaLogo = driver.findElement(By.xpath("//img[@src='/uploads/" + System.getenv("IMAGE_FILE_NAME") + "']"));
 	    	
-	    	Assert.assertNotNull(javaLogo);
+	    	Assert.assertEquals(javaLogo.getAttribute("src"), "https://selenium-testing-website.herokuapp.com/uploads/" + System.getenv("IMAGE_FILE_NAME"));
 	}
 	
 	@Test 
