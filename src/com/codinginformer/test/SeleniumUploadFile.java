@@ -67,7 +67,6 @@ public class SeleniumUploadFile {
 	    	WebElement nonImageText = driver.findElement(By.xpath("//*[contains(text(), '/uploads/" + System.getenv("NON_IMAGE_FILE_NAME") + "')]"));
 	    	
 	    	Assert.assertNotNull(nonImageText);
-			// Next steps: if image file is uploaded, check for the existence of the image in the following page. If not, check for the existence of non-image page in the following page
 	}
  	
 	
